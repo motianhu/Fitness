@@ -1,0 +1,97 @@
+<!--{include file='inc/header.html'}-->
+<div class="container" id="container">
+	<!--banner 开始-->
+	<!--{include file='inc/slide.html'}-->
+	<!--banner 结束-->
+	<!--课程开始-->
+	<div class="content">
+		<div class="weui-navbar">
+			<div class="weui-navbar__item"  onclick="$('.share_area').show().addClass('fadeIn');">
+				<span><!--{isset($area_title)?$area_title:'深圳全城'}--></span>
+				<img class="unfold" src="<!--{base_url()}-->static/image/unfold.png" />
+			</div>
+			<div class="weui-navbar__item" onclick="$('.share_course_item').show().addClass('fadeIn');">
+				<span id="s_course">全部课程</span>
+				<img class="unfold" src="<!--{base_url()}-->static/image/unfold.png" />
+			</div>
+		</div>
+		
+		<div id="leftTabBox" class="tabBox">
+				<div class="hd">
+					<ul>
+						<!--{foreach $store as $key=>$val}-->
+						<li <!--{if $key == 0}-->class="on"<!--{/if}-->><a href="#"><!--{$val['name']}--></a></li>
+						<!--{/foreach}-->
+					</ul>
+				</div>
+				<div class="bd">
+						<!--{foreach $store as $val}-->
+						<!--{if ! empty($coach[$val['id']])}-->
+						<ul>
+							<!--{foreach $coach[$val['id']] as $v}-->
+							<li class="t" course-id="<!--{$v['course_id']}-->">
+								<div class="pic"><img src="<!--{$v['pic_persion']}-->" /></div>
+								<a class="yy" href="<!--{base_url()}-->order/date/<!--{$v['admin_id']}-->">预约</a>
+								<div class="con" _url="<!--{base_url()}-->course/detail/<!--{$v['admin_id']}-->">
+									<div class="tit">
+									 	<!--{$v['coach_name']}-->
+									 </div>
+									<div class="ncon">
+										<div>
+											<!--{foreach $v['course_tag'] as $value}-->
+											<span><!--{$value}--></span>
+											<!--{/foreach}-->
+										</div>
+										<div>￥<!--{$v['price']}-->元/次 </div>
+									</div>
+								</div>
+							</li>
+							<!--{/foreach}-->
+						</ul>
+						<!--{else}-->
+						<ul>
+						</ul>
+						<!--{/if}-->
+						<!--{/foreach}-->
+				</div>
+			</div>
+ 	</div>
+	<!--课程结束-->
+</div>
+<div class="page-bd-15">
+	<div class="weui-share share_area" onclick="$(this).fadeOut();$(this).removeClass('fadeOut')">
+		<div id="course-area">
+				<!--{foreach $area as $key=>$value}-->
+				<div class="item_title">
+					<span><!--{$value['name']}-->市</span>
+					<hr />
+				</div>
+				<div>
+					<span class="course_item" key="<!--{$key}-->"><!--{$value['name']}-->全城</span>
+					<!--{foreach $value['child'] as $k => $v}-->
+				<!--{if $k%3==2}--><div><!--{/if}-->
+					<span class="course_item" key="<!--{$v['id']}-->"><!--{$v['name']}--></span>
+				<!--{if $k%3==1}--></div><!--{/if}-->
+					<!--{/foreach}-->
+				<!--{/foreach}-->
+		</div>	
+	</div>		
+</div>
+<div class="page-bd-15">
+	<div class="weui-share share_course_item" onclick="$(this).fadeOut();$(this).removeClass('fadeOut')">
+		<div id="course-item">
+			<div class="item_title">
+				<span>深圳全城-本周热门课程</span>
+				<hr />
+			</div>
+			<div>
+				<span class="course_item" key='0'>全部课程</span>
+			<!--{foreach $course as $key=>$value}-->
+			<!--{if $key%3==2}--><div><!--{/if}-->
+				<span class="course_item" key="<!--{$value['id']}-->"><!--{$value['name']}--></span>
+			<!--{if $key%3==1}--></div><!--{/if}-->
+			<!--{/foreach}-->
+		</div>		
+	</div> 
+</div>
+<!--{include file='inc/footer.html'}-->

@@ -1,0 +1,25 @@
+<input type="hidden" id="host" value="<!--{base_url()}-->">
+<script type="text/javascript" src="<!--{base_url()}-->static/js/jquery.js"></script>
+<script type="text/javascript" src="<!--{base_url()}-->static/js/jquery.validate.min.js"></script>
+<script src="<!--{base_url()}-->static/assets/bootstrap/bootstrap.min.js"></script>
+
+<!--page specific plugin scripts-->
+
+
+<!--flaty scripts-->
+<script src="<!--{base_url()}-->static/js/flaty.js"></script>
+<!--{if isset($footerJs) && !empty($footerJs)}-->
+<!--{foreach $footerJs as $key => $value}-->
+<script type="text/javascript" src="<!--{base_url()}-->static/js/<!--{$value}-->?v=2.0"></script>
+<!--{/foreach}-->
+<!--{/if}-->
+<script type="text/javascript">
+	$('.page a').each(function(){
+		$(this).click(function(){
+			$('#pform').attr('action',$(this).attr('href')).submit();
+			return false;
+		});
+	});
+</script>
+</body>
+</html>

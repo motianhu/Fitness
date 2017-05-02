@@ -1,0 +1,46 @@
+<!--{include file='inc/header.html'}-->
+<div class="container" id="container">
+	<div>
+		<div class="p_order_rq">
+			<div class="order_rq">
+				<div class="rq_num"><!--{$train_cnt}--></div>
+				<div class="rq_unit">累计训练/次</div>
+			</div>
+			<div class="order_rq">
+				<div class="rq_num"><!--{$train_minute}--></div>
+				<div class="rq_unit">累计时长/分钟</div>
+			</div>
+			<div class="order_rq">
+				<div class="rq_num"><!--{$train_day}--></div>
+				<div class="rq_unit">累计天数</div>
+			</div>
+		</div>
+		<!--{if empty($order)}-->
+		<div class="weui-btn_yuyue">
+			<a href="<!--{base_url()}-->course">预约课程</a>
+		</div>
+		<!--{else}-->
+			<div class="loadmore">
+			<!--{foreach $order as $val}-->
+			<div class="<!--{$val['status']=='2'?'no_img':'yes_img'}--> ycard">
+				<div><img src="<!--{$val['pic_persion']}-->" /></div>
+				<div class="order-info">
+					<div><!--{date('Y年m月d日',strtotime($val['date']))}-->  <!--{$val['time']}-->~<!--{intval($val['time'])+1}-->:00</div>
+					<div style="text-align:right;"><!--{$val['store_name']}--></div>
+				</div>
+				<div class="people-num"><!--{$val['num']}-->人</div>
+				<div class="course-coach"><!--{$val['course_name']}-->(<!--{$val['coach_name']}-->)</div>
+				<div>
+					<!--{if in_array($val['status'],array('2','4'))}-->
+					<a class="cc" href="javascript:void(0);"><!--{$status_arr[$val['status']]}--></a>
+					<!--{else}-->
+					<a class="yy" href="<!--{base_url()}-->order/detail/<!--{$val['order_id']}-->">详情</a>
+					<!--{/if}-->
+				</div>
+			</div>	
+			<!--{/foreach}-->
+			</div>
+		<!--{/if}-->
+	</div>
+</div>
+<!--{include file='inc/footer.html'}-->

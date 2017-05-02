@@ -1,0 +1,14 @@
+<!--{include file='inc/header.html'}-->
+<div class="container" id="container">
+	<div class="activity">
+		<!--{$content}-->
+	</div>
+</div>
+<input type="hidden" id="host" value="<!--{base_url()}-->">
+<!--{if isset($footerJs) && !empty($footerJs)}-->
+<!--{foreach $footerJs as $key => $value}-->
+<script type="text/javascript" src="<!--{base_url()}-->static/js/<!--{$value}-->?v=2.3"></script>
+<!--{/foreach}-->
+<!--{/if}-->
+</body>
+</html>

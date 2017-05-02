@@ -1,0 +1,29 @@
+<!--{include file='inc/header.html'}-->
+<div class="container" id="container">
+	<!--banner 开始-->
+	<!--{include file='inc/slide.html'}-->
+	<!--banner 结束-->
+	<!--门店开始-->
+	<div id="weui-tab">
+		<!--{foreach $list['data'] as $val}-->
+		<div class="weui-tab_md">
+			<div class="tab_md_bot">
+				<div class="bot_co">
+					<div class="md_bot_title">
+						<!--{$val['name']}-->
+					</div>
+					<div class="md_bot_addr">
+						<!--{$val['addr']}-->
+					</div>
+				</div>
+			</div>
+			<a href="<?php echo base_url();?>store/detail/<!--{$val['id']}-->"><img alt="" src="<!--{$val['img1']}-->"></a>
+		</div>
+		<!--{/foreach}-->
+	</div>
+	<div class="scroller-pullup status-success">
+		<span class="pull-msg">coming soon ...</span>
+	</div>
+	<!--门店结束-->
+</div>
+<!--{include file='inc/footer.html'}-->

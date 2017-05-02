@@ -1,0 +1,109 @@
+<!--{include file='inc/header.html'}-->
+<!-- BEGIN Content -->
+<div id="main-content">
+    <!-- BEGIN Main Content -->
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="box">
+                <div class="box-title">
+                    <h3><i class="icon-comment"></i> 教练管理</h3>
+
+                    <div class="box-tool">
+                    	<a href="<!--{base_url()}-->shop/coach/" class="btn btn-info">返回上一级</a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <form name="addForm" id="addForm" enctype="multipart/form-data" method="post" action="<!--{base_url()}-->shop/coach/save/<!--{isset($result) ? $result['admin_id'] : ''}-->">
+                        <table class="table table-advance">
+                        	<tr>
+                                <td  align="right">门店：</td>
+                                <td><label for="username"></label>
+                                   <select name="store_id" class="form-control">
+									  <!--{if !empty($store)}-->						          
+	                        		  <!--{foreach $store as  $key=>$value}-->
+	                        		  <option <!--{if isset($result) && $result['store_id'] == $key}-->selected<!--{/if}--> value="<!--{$key}-->"><!--{$value}--></option>
+	                        		  <!--{/foreach}-->
+	                        		  <!--{/if}-->	
+									</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  align="right">登录名：</td>
+                                <td><label for="username"></label>
+                                    <input type="text" name="uname" id="uname" required value="<!--{isset($result) ? $result['uname'] : ''}-->" ></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">密码：</td>
+                                <td><label for="username"></label>
+                                    <input type="password" name="passwd" id="passwd" <!--{if ! isset($result)}-->required<!--{/if}--> ></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">姓名：</td>
+                                <td><label for="username"></label>
+                                    <input type="text" name="name" id="name" value="<!--{isset($result) ? $result['name'] : ''}-->" ></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">头像：</td>
+                                <td>
+                                	<!--{if isset($result) && $result['pic_persion'] != ''}-->
+                                	<img style="width: 100px;" src="<!--{$result['pic_persion']}-->" class="img-circle">
+                                	<!--{/if}-->
+                                	<input type="file" name="pic_persion" id="inputfile">
+                                	<p class="help-block">最大200KB</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  align="right">详情图：</td>
+                                <td>
+                                	<!--{if isset($result) && $result['pic_detail'] != ''}-->
+                                	<img style="width: 100px;" src="<!--{$result['pic_detail']}-->" class="img-thumbnail">
+                                	<!--{/if}-->
+                                	<input type="file" name="pic_detail" id="inputfile">
+                                	<p class="help-block">最大512KB</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  align="right">个人简介：</td>
+                                <td><label for="username"></label>
+                                	<textarea rows="5" style="width:80%;" name="profile" id="profile" ><!--{isset($result) ? $result['profile'] : ''}--></textarea></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">课程价格：</td>
+                                <td><label for="username"></label>
+                                    <input type="text" name="price" id="price" value="<!--{isset($result) ? $result['price'] : ''}-->" ></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">课程简介：</td>
+                                <td><textarea rows="5"  style="width:80%;" name="introduce" id="introduce" ><!--{isset($result) ? $result['introduce'] : ''}--></textarea></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">注意事项：</td>
+                                <td><script id="notice" name="notice" type="text/plain"><!--{isset($result) ? $result['notice'] : ''}--></script></td>
+                            </tr>
+                            <tr>
+                                <td  align="right">是否禁用：</td>
+                                <td><label for="username"></label>
+                                    <input type="radio" name="disabled" value="0" <!--{if ! isset($result) || $result['disabled']=='0'}-->checked<!--{/if}-->>否
+                                    <input type="radio" name="disabled" value="1" <!--{if isset($result) && $result['disabled']=='1'}-->checked<!--{/if}-->>是
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td  align="right">&nbsp;</td>
+                                <td><input type="submit" class="btn btn-primary" id="button" value="保存"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END Main Content -->
+
+    <!--{include file='inc/copyright.html'}-->
+
+    <a id="btn-scrollup" class="btn btn-circle btn-large" href="#"><i class="icon-chevron-up"></i></a>
+</div>
+<!-- END Content -->
+
+<!--{include file='inc/footer.html'}-->

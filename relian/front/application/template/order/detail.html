@@ -1,0 +1,67 @@
+<!--{include file='inc/header.html'}-->
+<div class="container" id="container">
+	<div class="order_detail">
+		<div class="top_info">
+			<div class="course-coach"><!--{$course_name}--> (<!--{$coach_name}-->)</div>
+			<div class="date-time"><!--{date('Y月m日',strtotime($date))}-->  <!--{$time}-->~<!--{intval($time)+1}-->:00</div>
+		
+			<div><img class="pic_persion" src="<!--{$pic_persion}-->" /></div>
+			<div class="store_name"><!--{$store_name}--></div>
+			<div class="people_num">人数：<!--{$num}-->人</div>
+		</div>
+		
+		<div class="top_info">
+			<div class="n_info">
+				<div>
+					<div class="info_title">地址:</div>
+					<div>
+						<!--{$addr}-->
+						<a href="<!--{$addr_link}-->">
+						<img style="float:right;width:4vw;" src="<!--{base_url()}-->static/image/location.png" />
+						</a>
+					</div>
+				</div>
+				
+				<div>
+					<div class="info_title">注意事项:</div>
+					<div><!--{$notice}--></div>
+				</div>
+				
+				<hr />
+				<div style="text-align:center;">6小时外每月可取消两次,超出扣费0.5次私教课程</div>
+				<!--{if $status < 2}-->
+				<div style="text-align:center;margin-top: 2vw;">
+					<a href="javascript:;" class="cancel_order">取消预约</a>
+				</div>
+				<!--{/if}-->
+			</div>
+		</div>
+	</div>
+</div>
+<!--BEGIN dialog-->
+<div class="js_dialog" id="Dialog" style="display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog weui-skin_android">
+        <div class="weui-dialog__hd"><strong class="weui-dialog__title">取消预约提示</strong></div>
+        <div class="weui-dialog__bd">
+        	6小时外每月可取消两次,超出扣费0.5次私教课程,确定取消该订单吗?
+        </div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+            <a href="<!--{base_url()}-->order/cancel/<!--{$order_id}-->" class="weui-dialog__btn weui-dialog__btn_primary">确认</a>
+        </div>
+    </div>
+</div>
+<!--END dialog-->
+<script type="text/javascript" src="<!--{base_url()}-->static/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$('.cancel_order').on('click', function(){
+        $('#Dialog').fadeIn(200);
+        return false;
+    });
+	$('.weui-dialog__btn').on('click',function(){
+		$('#Dialog').fadeOut(200);
+	})
+</script>
+</body>
+</html>

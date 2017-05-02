@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+html {
+	font-size: 625%; /* 100÷16=625% */
+}
+
+body {
+	font-family: "Helvetica Neue",Helvetica,STHeiTi,Arial,sans-serif;
+    background-color: #f2f2f2;
+    font-size: .24rem;
+    margin: 0 auto;
+}
+a{
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	display: inline;
+}
+#container{
+	margin-bottom:14vw;
+}
+.content{
+ 	padding-bottom: 0.2rem;	
+}
+/***tabbar****/
+.weui-tabbar {
+    display: -webkit-flex;
+    position: fixed;
+    z-index: 500;
+    bottom: 0;
+	margin: 0 auto;
+    width: 100%;
+    background-color: #F7F7FA;
+    height: 13.5vw;
+	line-height: 13.5vw;
+}
+.weui-tabbar:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    /* border-top: 1px solid #C0BFC4; */
+    color: #C0BFC4;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.weui-tabbar__item {
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    font-size: 0;
+    color: #dadada;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-color: #f1f4f4;
+}
+.weui-tabbar__item.weui-bar__item_on {
+    background-color: #72be00;
+}
+.weui-tabbar__label {
+    text-align: center;
+    color: #333;
+    font-size: 4.1vw;
+}
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+    color: #fff;
+}
+.weui-btn {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    font-size: 4.77vw;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    width: 100%;
+    background-color: #72be00;
+    height: 13.5vw;
+    line-height: 13.5vw;
+}
